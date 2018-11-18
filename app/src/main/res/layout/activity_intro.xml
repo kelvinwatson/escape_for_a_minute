@@ -6,7 +6,11 @@
         <import type="android.view.View" />
 
         <variable
-            name="introViewModel"
+            name="onClickListener"
+            type="com.watsonlogic.escapeforaminute.OnClickListener" />
+
+        <variable
+            name="viewModelContent"
             type="com.watsonlogic.escapeforaminute.viewmodel.IntroViewModel" />
     </data>
 
@@ -14,7 +18,9 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/motion_layout_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:onClick="@{(view) -> onClickListener.onClick(view, viewModelContent)}">
 
         <ImageView
             android:layout_width="match_parent"
@@ -22,12 +28,12 @@
             android:background="@android:color/black"
             android:scaleType="centerCrop"
             android:src="@drawable/aug_18_2018_walk2_park_bw"
-            app:fadeInImageAnimationDuration="@{introViewModel.imageAnimationDuration}"
+            app:fadeInImageAnimationDuration="@{viewModelContent.imageAnimationDuration}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shouldSkipAnimation="@{introViewModel.skipAnimation}" />
+            app:shouldSkipAnimation="@{viewModelContent.skipAnimation}" />
 
         <TextView
             android:id="@+id/escape"
@@ -37,13 +43,13 @@
             android:gravity="right"
             android:paddingTop="@dimen/common_padding"
             android:paddingRight="@dimen/common_padding"
-            android:text="Escape"
+            android:text="@string/intro_escape"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Display4"
             android:textColor="@android:color/black"
-            app:fadeInTitleAnimationDuration="@{introViewModel.titleAnimationDuration}"
+            app:fadeInTitleAnimationDuration="@{viewModelContent.titleAnimationDuration}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shouldSkipAnimation="@{introViewModel.skipAnimation}" />
+            app:shouldSkipAnimation="@{viewModelContent.skipAnimation}" />
 
         <TextView
             android:id="@+id/for_a_minute"
@@ -53,13 +59,13 @@
             android:gravity="right"
             android:paddingRight="@dimen/common_padding"
             android:paddingBottom="@dimen/common_padding"
-            android:text="for a minute"
+            android:text="@string/intro_for_a_minute"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
             android:textColor="@android:color/black"
             android:textStyle="italic"
-            app:fadeInSubtitleAnimationDuration="@{introViewModel.subtitleAnimationDuration}"
+            app:fadeInSubtitleAnimationDuration="@{viewModelContent.subtitleAnimationDuration}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/escape"
-            app:shouldSkipAnimation="@{introViewModel.skipAnimation}" />
+            app:shouldSkipAnimation="@{viewModelContent.skipAnimation}" />
     </android.support.constraint.ConstraintLayout>
 </layout>

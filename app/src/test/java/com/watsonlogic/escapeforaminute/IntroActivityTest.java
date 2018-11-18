@@ -2,19 +2,17 @@ package com.watsonlogic.escapeforaminute;
 
 import android.content.SharedPreferences;
 
-import org.junit.Before;
+import com.watsonlogic.escapeforaminute.activity.introactivity.IntroActivity;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.anyBoolean;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

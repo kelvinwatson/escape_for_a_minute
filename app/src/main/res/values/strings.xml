@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Escape for a Minute Gallery</string>
+    <string name="intro_escape">Escape</string>
+    <string name="intro_for_a_minute">for a minute</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
@@ -9,6 +11,7 @@
     <string name="view_intro_screen_alert_body">This will close and reopen the app.</string>
     <string name="view_intro_screen_alert_confirm">Ok</string>
     <string name="view_intro_screen_alert_cancel">Cancel</string>
+    <string name="our_web_work">Our web work</string>
 
 
     <string-array name="pref_example_list_titles">
@@ -96,4 +99,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

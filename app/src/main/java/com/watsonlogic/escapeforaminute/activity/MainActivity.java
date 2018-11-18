@@ -1,6 +1,7 @@
-package com.watsonlogic.escapeforaminute;
+package com.watsonlogic.escapeforaminute.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -14,16 +15,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.watsonlogic.escapeforaminute.R;
+import com.watsonlogic.escapeforaminute.activity.introactivity.IntroActivity;
+import com.watsonlogic.escapeforaminute.app.SharedPreferencesModule;
+
+import javax.inject.Inject;
+import javax.inject.Provider;
+
+import dagger.android.AndroidInjection;
+
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener
 {
+    @Inject
+    SharedPreferences sharedPreferences;
+
     private static final int REQUEST_CODE_SETTINGS = 36;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        AndroidInjection.inject(this);
+        //7. don't forget this, so that sharedPreferences can be injected
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -89,9 +105,13 @@ public class MainActivity extends AppCompatActivity
         {
             // Handle the camera action
         }
-        else if (id == R.id.nav_gallery)
+        else if (id == R.id.our_web_work)
         {
-
+//            final Intent webViewIntent = new Intent(this, WebViewActivity.class);
+//            webViewIntent.putExtra(EXTRA_URL, "https://kelvinwatson.com/me");
+//            webViewIntent.putExtra(EXTRA_TITLE, "Kelvin Watson");
+//            startActivity(webViewIntent);
+            startActivity(new Intent(this, WebWorkActivity.class));
         }
         else if (id == R.id.nav_slideshow)
         {

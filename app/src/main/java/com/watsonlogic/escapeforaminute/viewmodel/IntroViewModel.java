@@ -1,10 +1,13 @@
 package com.watsonlogic.escapeforaminute.viewmodel;
 
+import android.app.Application;
 import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-public class IntroViewModel
+import com.watsonlogic.escapeforaminute.R;
+
+public class IntroViewModel extends AppViewModel
 {
     private static final float STARTING_ALPHA = 0f;
     private static final float ENDING_ALPHA = 1f;
@@ -13,13 +16,14 @@ public class IntroViewModel
     public static final long subtitleAnimationDuration = 3500;
     public final boolean skipAnimation;
 
-    public IntroViewModel()
+    public IntroViewModel(Application application)
     {
-        this.skipAnimation = false;
+        this(application, false);
     }
 
-    public IntroViewModel(boolean skipAnimation)
+    public IntroViewModel(Application application, boolean skipAnimation)
     {
+        super(application);
         this.skipAnimation = skipAnimation;
     }
 
@@ -47,7 +51,14 @@ public class IntroViewModel
         {
             view.setAlpha(STARTING_ALPHA);
             view.animate().alpha(ENDING_ALPHA).setDuration(duration).setListener(null);
-        } else
+        }
+        else
             view.setAlpha(ENDING_ALPHA);
+    }
+
+    @Override
+    public int getLayoutId()
+    {
+        return R.layout.activity_intro;
     }
 }
