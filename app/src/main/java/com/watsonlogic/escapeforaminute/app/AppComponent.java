@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjectionModule;
+import dagger.android.support.AndroidSupportInjectionModule;
 
 //1. define an AppComponent interface with an inner builder to seed the application instance
 //3. AndroidInjectionModule.class is required for the @Binds @IntoMap stuff for
@@ -19,7 +20,7 @@ import dagger.android.AndroidInjectionModule;
 @Singleton
 // installing AppModule here means we can inject any objects provided by AppModule into anyway in
 // the app. i.e. since AppModule provides application, we can literally inject it anywhere
-@Component(modules = {AppModule.class, AndroidInjectionModule.class, ActivityBindingModule.class})
+@Component(modules = {AppModule.class, AndroidInjectionModule.class, AndroidSupportInjectionModule.class, ActivityBindingModule.class})
 public interface AppComponent
 {
     void inject(App app);

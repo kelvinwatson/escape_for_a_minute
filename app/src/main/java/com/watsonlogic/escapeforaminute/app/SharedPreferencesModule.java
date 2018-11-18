@@ -14,6 +14,7 @@ import dagger.Provides;
 @Module
 public abstract class SharedPreferencesModule
 {
+    @ActivityScope
     @Provides
     static SharedPreferences providesSharedPreferences(Context context)
     {

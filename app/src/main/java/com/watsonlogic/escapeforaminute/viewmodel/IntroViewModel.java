@@ -16,12 +16,12 @@ public class IntroViewModel extends AppViewModel
     public static final long subtitleAnimationDuration = 3500;
     public final boolean skipAnimation;
 
-    public IntroViewModel(Application application)
+    public IntroViewModel(@NonNull Application application)
     {
         this(application, false);
     }
 
-    public IntroViewModel(Application application, boolean skipAnimation)
+    public IntroViewModel(@NonNull Application application, boolean skipAnimation)
     {
         super(application);
         this.skipAnimation = skipAnimation;

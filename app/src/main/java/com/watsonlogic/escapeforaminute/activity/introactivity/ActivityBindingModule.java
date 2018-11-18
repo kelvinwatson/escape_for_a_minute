@@ -1,9 +1,10 @@
 package com.watsonlogic.escapeforaminute.activity.introactivity;
 
-import android.app.Activity;
-
+import com.watsonlogic.escapeforaminute.activity.ActivityScope;
 import com.watsonlogic.escapeforaminute.activity.MainActivity;
-import com.watsonlogic.escapeforaminute.activity.WebWorkActivity;
+import com.watsonlogic.escapeforaminute.activity.webwork.ColumnWidthModule;
+import com.watsonlogic.escapeforaminute.activity.webwork.WebWorkActivity;
+import com.watsonlogic.escapeforaminute.activity.webwork.WebGalleryFragmentModule;
 import com.watsonlogic.escapeforaminute.app.SharedPreferencesModule;
 
 import dagger.Binds;
@@ -37,17 +38,22 @@ public abstract class ActivityBindingModule
     @Binds
     @IntoMap
     @ClassKey(IntroActivity.class)
+    @ActivityScope
     abstract AndroidInjector.Factory<?> bindIntroActivityInjectorFactory
         (IntroActivitySubcomponent.Builder builder);
 
-    // 6. Instead of the @Binds @IntoMap @ClassKey method above for IntroActivity, we can actually use
+    // 6. Instead of the @Binds @IntoMap @ClassKey method above for IntroActivity, we can
+    // actually use
     // @ContributesAndroidInjector instead! It will auto generate the @Binds @Into @ClassKey for us.
+    @ActivityScope
     @ContributesAndroidInjector(modules = SharedPreferencesModule.class)
     abstract MainActivity bindMainActivity();
 
     // 8. let's try this so that we can add injection to our WebWorkActivity to inject
-    // our webGalleryFragment
-    @ContributesAndroidInjector
+    // our webGalleryFragment, and any other dependencies needed by the webGalleryFragment (e.g.
+    // column width etc)
+    @ActivityScope
+    @ContributesAndroidInjector(modules = {WebGalleryFragmentModule.class, ColumnWidthModule.class})
     abstract WebWorkActivity bindWebWorkActivity();
 
 

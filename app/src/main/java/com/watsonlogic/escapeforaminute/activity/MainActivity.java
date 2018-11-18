@@ -17,10 +17,9 @@ import android.view.MenuItem;
 
 import com.watsonlogic.escapeforaminute.R;
 import com.watsonlogic.escapeforaminute.activity.introactivity.IntroActivity;
-import com.watsonlogic.escapeforaminute.app.SharedPreferencesModule;
+import com.watsonlogic.escapeforaminute.activity.webwork.WebWorkActivity;
 
 import javax.inject.Inject;
-import javax.inject.Provider;
 
 import dagger.android.AndroidInjection;
 
