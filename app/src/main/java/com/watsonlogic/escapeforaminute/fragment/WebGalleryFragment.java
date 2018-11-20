@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.watsonlogic.escapeforaminute.OnClickListener;
+import com.watsonlogic.escapeforaminute.activity.webwork.ColumnWidthModule;
 import com.watsonlogic.escapeforaminute.viewmodel.AppViewModel;
 import com.watsonlogic.escapeforaminute.viewmodel.WebGalleryItemViewModel;
 
@@ -24,8 +25,7 @@ public class WebGalleryFragment extends RecyclerFragment implements OnClickListe
     @Inject
     Application application;
     @Inject
-    @Named("ColumnWidth")
-    int columnWidth;
+    ColumnWidthModule.ColumnWidth columnWidth;
     @Inject
     AutoFitGridLayoutManager layoutManager;
 
@@ -70,11 +70,11 @@ public class WebGalleryFragment extends RecyclerFragment implements OnClickListe
         private boolean columnWidthChanged = true;
 
         @Inject
-        public AutoFitGridLayoutManager(Context context, @Named("ColumnWidth") int columnWidth)
+        public AutoFitGridLayoutManager(Context context, ColumnWidthModule.ColumnWidth columnWidth)
         {
             super(context, 1);
 
-            setColumnWidth(columnWidth);
+            setColumnWidth(columnWidth.get());
         }
 
         public void setColumnWidth(int newColumnWidth)

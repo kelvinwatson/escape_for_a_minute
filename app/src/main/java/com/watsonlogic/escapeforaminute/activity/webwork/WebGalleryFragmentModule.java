@@ -14,6 +14,6 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class WebGalleryFragmentModule
 {
     @FragmentScope
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = ColumnWidthModule.class)
     abstract WebGalleryFragment bindWebGalleryFragment();
 }

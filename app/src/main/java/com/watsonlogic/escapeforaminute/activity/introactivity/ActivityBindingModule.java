@@ -2,9 +2,8 @@ package com.watsonlogic.escapeforaminute.activity.introactivity;
 
 import com.watsonlogic.escapeforaminute.activity.ActivityScope;
 import com.watsonlogic.escapeforaminute.activity.MainActivity;
-import com.watsonlogic.escapeforaminute.activity.webwork.ColumnWidthModule;
-import com.watsonlogic.escapeforaminute.activity.webwork.WebWorkActivity;
 import com.watsonlogic.escapeforaminute.activity.webwork.WebGalleryFragmentModule;
+import com.watsonlogic.escapeforaminute.activity.webwork.WebWorkActivity;
 import com.watsonlogic.escapeforaminute.app.SharedPreferencesModule;
 
 import dagger.Binds;
@@ -42,9 +41,14 @@ public abstract class ActivityBindingModule
     abstract AndroidInjector.Factory<?> bindIntroActivityInjectorFactory
         (IntroActivitySubcomponent.Builder builder);
 
+//    @Binds
+//    @IntoMap
+//    @ClassKey(MainActivity.class)
+//    abstract AndroidInjector.Factory<?> bindMainActivityInjectorFactory
+//        (MainActivitySubcomponent.Builder builder);
+
     // 6. Instead of the @Binds @IntoMap @ClassKey method above for IntroActivity, we can
-    // actually use
-    // @ContributesAndroidInjector instead! It will auto generate the @Binds @Into @ClassKey for us.
+    // actually use @ContributesAndroidInjector instead! It will auto generate the @Binds @Into @ClassKey for us.
     @ActivityScope
     @ContributesAndroidInjector(modules = SharedPreferencesModule.class)
     abstract MainActivity bindMainActivity();
@@ -53,13 +57,7 @@ public abstract class ActivityBindingModule
     // our webGalleryFragment, and any other dependencies needed by the webGalleryFragment (e.g.
     // column width etc)
     @ActivityScope
-    @ContributesAndroidInjector(modules = {WebGalleryFragmentModule.class, ColumnWidthModule.class})
+    @ContributesAndroidInjector(modules = {WebGalleryFragmentModule.class})
     abstract WebWorkActivity bindWebWorkActivity();
 
-
-//    @Binds
-//    @IntoMap
-//    @ClassKey(MainActivity.class)
-//    abstract AndroidInjector.Factory<?> bindMainActivityInjectorFactory
-//        (MainActivitySubcomponent.Builder builder);
 }
